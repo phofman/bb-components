@@ -1,6 +1,7 @@
+QT += testlib
 QT -= gui
 
-CONFIG += c++11 console
+CONFIG += qt console warn_on depend_includepath testcase
 CONFIG -= app_bundle
 QMAKE_CFLAGS += -std=c99 -Wno-unused-variable -Wno-unused-parameter -Wno-type-limits -Wno-sign-compare -Wno-old-style-declaration
 
@@ -15,9 +16,10 @@ DEFINES += QT_DEPRECATED_WARNINGS
 # You can also select to disable deprecated APIs only up to a certain version of Qt.
 #DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
 
-INCLUDEPATH += $$PWD/../../../ext/gumbo/src/
+INCLUDEPATH += $$PWD/../../../ext/gumbo/src/ \
+               $$PWD/../../html/
 
-SOURCES += main.cpp \
+SOURCES += \
     ../../../ext/gumbo/src/attribute.c \
     ../../../ext/gumbo/src/char_ref.c \
     ../../../ext/gumbo/src/error.c \
@@ -31,5 +33,6 @@ SOURCES += main.cpp \
     ../../../ext/gumbo/src/vector.c \
     ../../html/HtmlNode.cpp \
     ../../html/HtmlAttribute.cpp \
-    ../../html/HtmlDocument.cpp
+    ../../html/HtmlDocument.cpp \
+    tst_html.cpp
 
