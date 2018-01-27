@@ -1,4 +1,4 @@
-QT += testlib
+QT += testlib network
 QT -= gui
 
 CONFIG += qt console warn_on depend_includepath testcase
@@ -16,8 +16,10 @@ DEFINES += QT_DEPRECATED_WARNINGS
 # You can also select to disable deprecated APIs only up to a certain version of Qt.
 #DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
 
-INCLUDEPATH += $$PWD/../../../ext/gumbo/src/ \
-               $$PWD/../../html/
+INCLUDEPATH +=  $$PWD/../../../ext/gumbo/src/ \
+                $$PWD/../../html/ \
+                $$PWD/../../data/ \
+                $$PWD/../../net/
 
 SOURCES += \
     ../../../ext/gumbo/src/attribute.c \
@@ -34,5 +36,30 @@ SOURCES += \
     ../../html/HtmlNode.cpp \
     ../../html/HtmlAttribute.cpp \
     ../../html/HtmlDocument.cpp \
+    ../../data/DataItem.cpp \
+    ../../data/DataItemGallery.cpp \
+    ../../data/DataItemImage.cpp \
+    ../../data/DataItemPager.cpp \
+    ../../data/DataItemText.cpp \
+    ../../data/DataItemVideo.cpp \
+    ../../net/ParsingResult.cpp \
+    ../../net/NetworkDataSource.cpp \
     tst_html.cpp
+
+
+HEADERS += \
+    ../../../ext/gumbo/src/gumbo.h \
+    ../../html/HtmlNode.h \
+    ../../html/HtmlAttribute.h \
+    ../../html/HtmlDocument.h \
+    ../../data/DataItem.h \
+    ../../data/DataItemGallery.h \
+    ../../data/DataItemImage.h \
+    ../../data/DataItemPager.h \
+    ../../data/DataItemText.h \
+    ../../data/DataItemVideo.h \
+    ../../net/ParsingResult.h \
+    ../../net/AbstractDataSource.h \
+    ../../net/NetworkDataSource.h \
+    util.h
 
