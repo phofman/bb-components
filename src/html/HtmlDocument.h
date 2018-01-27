@@ -17,6 +17,7 @@ class HtmlDocument
 {
 public:
     HtmlDocument(const QByteArray &content, const GumboOptions *options = NULL);
+    HtmlDocument(const QString &content, const GumboOptions *options = NULL);
     virtual ~HtmlDocument();
 
 public:
