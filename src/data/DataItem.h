@@ -21,6 +21,7 @@ class DataItem : public QObject
     Q_PROPERTY(QString caption READ caption)
     Q_PROPERTY(QUrl uri READ source)
     Q_PROPERTY(QUrl detailsPage READ detailsPage)
+    Q_PROPERTY(QString fileName READ fileName)
 
 private:
     QString type_;
@@ -35,6 +36,7 @@ public:
     const QString &caption() const  { return caption_; }
     QUrl source() const             { return source_; }
     QUrl detailsPage() const        { return detailsPage_; }
+    QString fileName() const;
 };
 
 Q_DECLARE_METATYPE (DataItem *)
