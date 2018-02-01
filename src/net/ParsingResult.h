@@ -15,6 +15,7 @@ public:
                   int pageNumer = -1, int prevPageNumber = -1, int nextPageNumber = -1);
 
 public:
+    bool hasError() const;
     int errorCode() const;
     QString message() const;
 

@@ -10,6 +10,11 @@ ParsingResult::ParsingResult(QObject *parent, int errorCode, const QString &mess
     nextPageNumber_ = nextPageNumber;
 }
 
+bool ParsingResult::hasError() const
+{
+    return errorCode_ != 0;
+}
+
 int ParsingResult::errorCode() const
 {
     return errorCode_;
