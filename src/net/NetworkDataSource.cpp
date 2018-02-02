@@ -118,7 +118,8 @@ void NetworkDataSource::onPageLoaded()
         }
         else
         {
-            result = new ParsingResult(this, reply->attribute(QNetworkRequest::HttpStatusCodeAttribute).toInt(), reply->errorString());
+            //reply->attribute(QNetworkRequest::HttpStatusCodeAttribute).toInt()
+            result = new ParsingResult(this, QNetworkReply::ContentNotFoundError, reply->errorString());
             parsingCompleted(result);
         }
 
