@@ -6,8 +6,16 @@
 
 class DataItemText : public DataItem
 {
+    Q_PROPERTY(QString content READ content)
+
 public:
-    DataItemText(const QString &caption, const QUrl &source, const QUrl &detailsPage, QObject *parent = NULL);
+    DataItemText(const QString &caption, const QString &content, const QUrl &source, const QUrl &detailsPage, QObject *parent = NULL);
+
+public:
+    const QString &content() const { return content_; }
+
+private:
+    QString content_;
 };
 
 Q_DECLARE_METATYPE (DataItemText *)

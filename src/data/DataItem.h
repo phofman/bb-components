@@ -5,6 +5,7 @@
 #include <QObject>
 #include <QString>
 #include <QUrl>
+#include <QVariantMap>
 
 #include <QtCore/QMetaType>
 
@@ -29,6 +30,9 @@ private:
     QUrl source_;
     QUrl detailsPage_;
 
+    QString fileName_;
+    QVariantMap map_;
+
 public:
     DataItem(const QString &type, const QString &caption, const QUrl &source, const QUrl &detailsPage, QObject *parent = NULL);
 
@@ -36,7 +40,13 @@ public:
     const QString &caption() const  { return caption_; }
     QUrl source() const             { return source_; }
     QUrl detailsPage() const        { return detailsPage_; }
-    QString fileName() const;
+    const QString &fileName() const { return fileName_; }
+
+    const QVariantMap &toMap() const { return map_; }
+
+protected:
+    static QString getFileName(const QUrl &url);
+    void append(const QString& name, const QVariant& value);
 };
 
 Q_DECLARE_METATYPE (DataItem *)
