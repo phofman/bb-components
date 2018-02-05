@@ -3,7 +3,8 @@
 
 DataItemVideo::DataItemVideo(const QString &caption, const QUrl &source, const QUrl &detailsPage,
                              const QString &videoType, int width, int height, DataItemImage *poster, QObject *parent)
-    : DataItem(QLatin1String("video"), caption, source, detailsPage, parent)
+    : DataItem(QLatin1String("video"), videoType.length() > 0 ? videoType : QLatin1String("video/mpeg"),
+               caption, source, detailsPage, parent)
 {
     videoType_ = videoType;
     width_ = width;
@@ -13,6 +14,8 @@ DataItemVideo::DataItemVideo(const QString &caption, const QUrl &source, const Q
     if (poster != NULL)
     {
         poster->setParent(this);
+        append(QLatin1String("poster-uri"), poster->source());
+        append(QLatin1String("poster-mimeType"), poster->mimeType());
     }
 }
 

@@ -19,6 +19,7 @@ class DataItem : public QObject
 {
     Q_OBJECT
     Q_PROPERTY(QString type READ type)
+    Q_PROPERTY(QString mimeTyp READ mimeType)
     Q_PROPERTY(QString caption READ caption)
     Q_PROPERTY(QUrl uri READ source)
     Q_PROPERTY(QUrl detailsPage READ detailsPage)
@@ -30,19 +31,23 @@ private:
     QUrl source_;
     QUrl detailsPage_;
 
-    QString fileName_;
     QVariantMap map_;
+    QString fileName_;
+    QString mimeType_;
 
 public:
-    DataItem(const QString &type, const QString &caption, const QUrl &source, const QUrl &detailsPage, QObject *parent = NULL);
+    DataItem(const QString &type, const QString &mimeType, const QString &caption, const QUrl &source, const QUrl &detailsPage, QObject *parent = NULL);
 
     const QString &type() const     { return type_; }
+    const QString &mimeType() const { return mimeType_; }
     const QString &caption() const  { return caption_; }
     QUrl source() const             { return source_; }
     QUrl detailsPage() const        { return detailsPage_; }
     const QString &fileName() const { return fileName_; }
 
     const QVariantMap &toMap() const { return map_; }
+
+    static const QString getDefaultMimeType(const QString &fileName);
 
 protected:
     static QString getFileName(const QUrl &url);

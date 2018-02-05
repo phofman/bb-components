@@ -67,11 +67,17 @@ void TestHtml::test_loadAnything()
 
 void TestHtml::test_getFileName()
 {
-    DataItem item(QLatin1String("x"), QLatin1String("y"), QUrl("http://onet.pl/image/fav.ico?v=1"), QUrl("http://onet.pl"));
-    QVERIFY(item.fileName() == QLatin1String("fav.ico"));
+    DataItem item1(QLatin1String("x"), QLatin1String(""), QLatin1String("y"), QUrl("http://onet.pl/image/fav.ico?v=1"), QUrl("http://onet.pl"));
+    QVERIFY(item1.fileName() == QLatin1String("fav.ico"));
+    QVERIFY(item1.mimeType() == QLatin1String("image/ico"));
 
-    DataItem item2(QLatin1String("x"), QLatin1String("y"), QUrl("http://onet.pl/image/priv/fav2.ico#details"), QUrl("http://onet.pl"));
+    DataItem item2(QLatin1String("x"), QLatin1String(""), QLatin1String("y"), QUrl("http://onet.pl/image/priv/fav2.ico#details"), QUrl("http://onet.pl"));
     QVERIFY(item2.fileName() == QLatin1String("fav2.ico"));
+    QVERIFY(item2.mimeType() == QLatin1String("image/ico"));
+
+    DataItem item3(QLatin1String("x"), QLatin1String(""), QLatin1String("y"), QUrl("http://onet.pl/image/priv/fav3.gif#details"), QUrl("http://onet.pl"));
+    QVERIFY(item3.fileName() == QLatin1String("fav3.gif"));
+    QVERIFY(item3.mimeType() == QLatin1String("image/gif"));
 }
 
 QTEST_MAIN(TestHtml)
